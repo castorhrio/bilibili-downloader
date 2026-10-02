@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        width: 300px;
+        padding: 20px;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .header h2 {
+        margin: 0;
+        color: #00a1d6;
+        font-size: 18px;
+      }
+
+      .status {
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+
+      .status.active {
+        background-color: #e8f5e8;
+        color: #2d8f2d;
+        border: 1px solid #c3e6c3;
+      }
+
+      .status.inactive {
+        background-color: #fff3cd;
+        color: #856404;
+        border: 1px solid #ffeaa7;
+      }
+
+      .instructions {
+        font-size: 14px;
+        line-height: 1.5;
+        color: #666;
+        margin-bottom: 15px;
+      }
+
+      .features {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+      }
+
+      .features h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: #333;
+        font-size: 14px;
+      }
+
+      .features ul {
+        margin: 0;
+        padding-left: 20px;
+        font-size: 13px;
+        color: #666;
+      }
+
+      .features li {
+        margin-bottom: 5px;
+      }
+
+      .footer {
+        text-align: center;
+        font-size: 12px;
+        color: #999;
+        border-top: 1px solid #eee;
+        padding-top: 10px;
+      }
+
+      .button {
+        background-color: #00a1d6;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .button:hover {
+        background-color: #0091c2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h2>🎬 Bilibili下载器</h2>
+    </div>
+
+    <div id="status" class="status inactive">请前往Bilibili视频页面使用</div>
+
+    <div class="instructions">
+      <strong>使用方法：</strong><br />
+      1. 打开任意B站视频页面<br />
+      2. 点击视频下方的"下载"按钮<br />
+      3. 选择所需的视频质量或音频<br />
+      4. 开始下载
+    </div>
+
+    <div class="features">
+      <h3>✨ 功能特性</h3>
+      <ul>
+        <li>支持多种视频清晰度</li>
+        <li>支持单独下载音频</li>
+        <li>自动识别视频信息</li>
+        <li>简洁易用的界面</li>
+      </ul>
+    </div>
+
+    <button id="openBilibili" class="button">打开Bilibili</button>
+
+    <div class="footer">版本 1.0.0 | 仅供学习使用</div>
+
+    <script>
+      // 检查当前标签页是否是Bilibili
+      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        const currentTab = tabs[0];
+        const statusDiv = document.getElementById("status");
+
+        if (currentTab.url && currentTab.url.includes("bilibili.com")) {
+          statusDiv.className = "status active";
+          statusDiv.textContent = "✓ 当前页面支持下载";
+        }
+      });
+
+      // 打开Bilibili按钮
+      document
+        .getElementById("openBilibili")
+        .addEventListener("click", function () {
+          chrome.tabs.create({ url: "https://www.bilibili.com" });
+          window.close();
+        });
+    </script>
+  </body>
+</html>

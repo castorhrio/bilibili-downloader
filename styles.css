@@ -1,0 +1,289 @@
+/* Bilibili下载器样式文件 */
+
+.bili-download-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  margin-left: 8px;
+  background-color: #00a1d6;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.3s ease;
+  user-select: none;
+  border: none;
+}
+
+.bili-download-button:hover {
+  background-color: #0091c2;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 161, 214, 0.3);
+}
+
+.bili-download-button svg {
+  margin-right: 4px;
+  width: 14px;
+  height: 14px;
+}
+
+/* 下载面板样式 */
+.bili-download-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bili-download-panel > div {
+  background: white;
+  border-radius: 8px;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.bili-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+  background-color: #f8f9fa;
+  border-radius: 8px 8px 0 0;
+}
+
+.bili-panel-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.bili-close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.bili-close-btn:hover {
+  background-color: #ff4757;
+  color: white;
+}
+
+.bili-panel-content {
+  padding: 20px;
+}
+
+.bili-video-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  border-left: 4px solid #00a1d6;
+}
+
+.bili-download-options h4 {
+  margin: 20px 0 10px 0;
+  color: #333;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.bili-download-options h4:before {
+  content: "📹";
+  margin-right: 8px;
+}
+
+.bili-audio-options h4:before {
+  content: "🎵";
+}
+
+.bili-quality-list,
+.bili-audio-options {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.bili-download-btn {
+  padding: 10px 15px;
+  border: 2px solid #e9ecef;
+  background-color: white;
+  color: #333;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 13px;
+  text-align: left;
+  position: relative;
+}
+
+.bili-download-btn:hover {
+  border-color: #00a1d6;
+  background-color: #f8f9ff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 161, 214, 0.2);
+}
+
+.bili-download-btn:active {
+  transform: translateY(0);
+}
+
+.bili-download-btn[data-type="audio"] {
+  background-color: #fff3e0;
+  border-color: #ffb74d;
+}
+
+.bili-download-btn[data-type="audio"]:hover {
+  background-color: #ffe0b2;
+  border-color: #ffa726;
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+  .bili-download-panel > div {
+    margin: 20px;
+    max-width: calc(100% - 40px);
+  }
+  
+  .bili-panel-header,
+  .bili-panel-content {
+    padding: 15px;
+  }
+  
+  .bili-download-button {
+    padding: 4px 8px;
+    font-size: 12px;
+    margin-left: 4px;
+  }
+}
+
+/* 加载动画 */
+.bili-loading {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #00a1d6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 错误信息样式 */
+.bili-error-msg {
+  color: #dc3545;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 10px;
+  border-radius: 4px;
+  margin: 10px 0;
+  font-size: 13px;
+}
+
+.bili-warning-msg {
+  color: #856404;
+  background-color: #fff3cd;
+  border: 1px solid #ffeaa7;
+  padding: 10px;
+  border-radius: 4px;
+  margin: 10px 0;
+  font-size: 13px;
+}
+
+.bili-info-msg {
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border: 1px solid #bee5eb;
+  padding: 10px;
+  border-radius: 4px;
+  margin: 10px 0;
+  font-size: 13px;
+}
+
+/* 下载进度 */
+.bili-progress {
+  width: 100%;
+  height: 4px;
+  background-color: #e9ecef;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.bili-progress-bar {
+  height: 100%;
+  background-color: #00a1d6;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* 工具提示 */
+.bili-tooltip {
+  position: relative;
+}
+
+.bili-tooltip:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 1000;
+}
+
+.bili-tooltip:hover::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #333;
+  margin-bottom: -5px;
+}

@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Bilibili Video Downloader",
+  "version": "1.0.0",
+  "description": "Download videos and audio from Bilibili",
+  "permissions": ["activeTab", "storage", "downloads"],
+  "host_permissions": ["*://*.bilibili.com/*", "*://*.bilivideo.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["*://*.bilibili.com/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Bilibili Downloader"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["injected.js"],
+      "matches": ["*://*.bilibili.com/*"]
+    }
+  ]
+}
