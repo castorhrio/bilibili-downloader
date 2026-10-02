@@ -12,31 +12,19 @@
 
 ## 📦 安装方法
 
-### 方法一：开发者模式安装（推荐）
+### 开发者模式安装（推荐）
 
-1. **准备文件**
-   - 创建一个新文件夹，如 `bilibili-downloader`
-   - 将以下文件保存到该文件夹中：
-     - `manifest.json`
-     - `content.js`
-     - `injected.js`
-     - `background.js`
-     - `popup.html`
-     - `styles.css`
+克隆本仓库后直接加载，无需任何额外准备：
 
-2. **创建图标文件**
-   - 创建 `icon16.png` (16x16像素)
-   - 创建 `icon48.png` (48x48像素)
-   - 创建 `icon128.png` (128x128像素)
-   - 或使用任意PNG图片重命名
+```bash
+git clone https://github.com/castorhrio/bilibili-downloader.git
+```
 
-3. **安装到Chrome**
-   - 打开Chrome浏览器
-   - 输入 `chrome://extensions/` 进入扩展管理页面
-   - 开启右上角的"开发者模式"
-   - 点击"加载已解压的扩展程序"
-   - 选择包含插件文件的文件夹
-   - 安装完成！
+1. 打开 Chrome，输入 `chrome://extensions/` 进入扩展管理页面
+2. 开启右上角的「开发者模式」
+3. 点击「加载已解压的扩展程序」
+4. 选择刚才 clone 出来的 `bilibili-downloader` 文件夹
+5. 安装完成，工具栏会出现扩展图标
 
 ## 🚀 使用方法
 
@@ -79,15 +67,13 @@
 ### 文件结构
 ```
 bilibili-downloader/
-├── manifest.json          # 插件配置文件
-├── content.js             # 内容脚本
-├── injected.js            # 页面注入脚本
+├── manifest.json          # 插件配置（Manifest V3）
+├── content.js             # 内容脚本：拦截并解析视频流信息
+├── injected.js            # 注入页面脚本：插入下载按钮
 ├── background.js          # 后台服务脚本
-├── popup.html            # 弹出窗口页面
-├── styles.css            # 样式文件
-├── icon16.png            # 16x16图标
-├── icon48.png            # 48x48图标
-└── icon128.png           # 128x128图标
+├── popup.html             # 弹出窗口页面
+├── styles.css             # 样式文件
+└── README.md
 ```
 
 ## ⚠️ 注意事项
